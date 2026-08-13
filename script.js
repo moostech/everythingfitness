@@ -1,6 +1,5 @@
 /* ==========================================================================
    EVERYTHING FITNESS STUDIO - JAVASCRIPT ENGINE
-   Controls: Time-Row Schedule, Real-Time Capacity Tracker, Booking & Auth
    ========================================================================== */
 
 // STATE MANAGEMENT
@@ -67,15 +66,43 @@ let isLoggedIn = false;
 
 // DOM INITIALIZATION
 document.addEventListener("DOMContentLoaded", () => {
-  renderDayTabs();
-  renderSchedule();
+  parseUrlParams();
+  if (document.getElementById("dayTabsContainer")) renderDayTabs();
+  if (document.getElementById("scheduleGrid")) renderSchedule();
   setupScrollHeader();
   renderDashboardContent('bookings');
 });
 
+function parseUrlParams() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const typeParam = urlParams.get('type');
+  const subjectParam = urlParams.get('subject');
+
+  if (typeParam) {
+    const typeFilterEl = document.getElementById('typeFilter');
+    if (typeFilterEl) {
+      typeFilterEl.value = typeParam;
+      activeTypeFilter = typeParam;
+    }
+  }
+
+  if (subjectParam) {
+    const subjectSelectEl = document.getElementById('contactSubjectSelect');
+    if (subjectSelectEl) {
+      for (let i = 0; i < subjectSelectEl.options.length; i++) {
+        if (subjectSelectEl.options[i].text.toLowerCase().includes(subjectParam.toLowerCase())) {
+          subjectSelectEl.selectedIndex = i;
+          break;
+        }
+      }
+    }
+  }
+}
+
 // SCROLL HEADER STICKY EFFECT
 function setupScrollHeader() {
   const header = document.getElementById("siteHeader");
+  if (!header) return;
   window.addEventListener("scroll", () => {
     if (window.scrollY > 40) {
       header.style.boxShadow = "var(--shadow-md)";
@@ -88,6 +115,7 @@ function setupScrollHeader() {
 // RENDER DAY TABS
 function renderDayTabs() {
   const container = document.getElementById("dayTabsContainer");
+  if (!container) return;
   const days = [
     { name: "SUN", date: "5/18" },
     { name: "MON", date: "5/19" },
@@ -115,6 +143,7 @@ function selectDay(index) {
 function changeWeek(direction) {
   currentDateOffset += direction;
   const dateRangeEl = document.getElementById("dateRangeText");
+  if (!dateRangeEl) return;
   if (currentDateOffset === 0) {
     dateRangeEl.innerText = "May 18 – May 24, 2026";
   } else if (currentDateOffset > 0) {
@@ -127,28 +156,37 @@ function changeWeek(direction) {
 
 // SCHEDULE FILTERING & RENDERING (TIME-ROW LAYOUT)
 function applyScheduleFilters() {
-  activeTypeFilter = document.getElementById("typeFilter").value;
-  activeInstructorFilter = document.getElementById("instructorFilter").value;
+  const tf = document.getElementById("typeFilter");
+  const inf = document.getElementById("instructorFilter");
+  if (tf) activeTypeFilter = tf.value;
+  if (inf) activeInstructorFilter = inf.value;
   renderSchedule();
 }
 
 function resetScheduleFilters() {
-  document.getElementById("typeFilter").value = "all";
-  document.getElementById("instructorFilter").value = "all";
+  const tf = document.getElementById("typeFilter");
+  const inf = document.getElementById("instructorFilter");
+  if (tf) tf.value = "all";
+  if (inf) inf.value = "all";
   activeTypeFilter = "all";
   activeInstructorFilter = "all";
   renderSchedule();
 }
 
 function filterScheduleAndScroll(type) {
-  document.getElementById("typeFilter").value = type;
-  activeTypeFilter = type;
-  renderSchedule();
-  scrollToSection("schedule");
+  if (window.location.pathname.includes("schedule.html")) {
+    const tf = document.getElementById("typeFilter");
+    if (tf) tf.value = type;
+    activeTypeFilter = type;
+    renderSchedule();
+  } else {
+    window.location.href = `schedule.html?type=${type}`;
+  }
 }
 
 function renderSchedule() {
   const container = document.getElementById("scheduleGrid");
+  if (!container) return;
   
   let filtered = scheduleData.filter(item => item.day === selectedDayIndex);
 
@@ -236,37 +274,46 @@ function selectPlan(planName, price) {
 
 // WOMEN-ONLY WORKOUT TRIGGER
 function openWomenOnlyModal() {
-  openIntroModal();
-  const radioEl = document.querySelector('input[name="introModality"][value="Women-Only Session"]');
-  if (radioEl) radioEl.checked = true;
+  if (window.location.pathname.includes("schedule.html")) {
+    filterScheduleAndScroll('women');
+  } else {
+    window.location.href = "schedule.html?type=women";
+  }
 }
 
 function openContactModal(subject) {
-  scrollToSection('contact');
-  const sel = document.getElementById('contactSubjectSelect');
-  if (sel) {
-    for (let i = 0; i < sel.options.length; i++) {
-      if (sel.options[i].text.toLowerCase().includes(subject.toLowerCase())) {
-        sel.selectedIndex = i;
-        break;
+  if (window.location.pathname.includes("contact.html")) {
+    const sel = document.getElementById('contactSubjectSelect');
+    if (sel) {
+      for (let i = 0; i < sel.options.length; i++) {
+        if (sel.options[i].text.toLowerCase().includes(subject.toLowerCase())) {
+          sel.selectedIndex = i;
+          break;
+        }
       }
     }
+  } else {
+    window.location.href = `contact.html?subject=${encodeURIComponent(subject)}`;
   }
 }
 
 // MODAL CONTROLLERS
 function openIntroModal() {
-  document.getElementById("introModal").classList.add("active");
+  const el = document.getElementById("introModal");
+  if (el) el.classList.add("active");
 }
 
 function closeIntroModal() {
-  document.getElementById("introModal").classList.remove("active");
+  const el = document.getElementById("introModal");
+  if (el) el.classList.remove("active");
 }
 
 function handleIntroSubmit(e) {
   e.preventDefault();
-  const name = document.getElementById("introName").value;
-  const modality = document.querySelector('input[name="introModality"]:checked').value;
+  const nameEl = document.getElementById("introName");
+  const name = nameEl ? nameEl.value : "Member";
+  const modEl = document.querySelector('input[name="introModality"]:checked');
+  const modality = modEl ? modEl.value : "Class";
   alert(`🎉 Congratulations ${name}! Your Free Introductory Session for ${modality} has been registered! Check your email for confirmation details.`);
   closeIntroModal();
 }
@@ -278,41 +325,48 @@ function openBookingModal(slotId) {
 
   const spotsLeft = selectedSlotForBooking.max - selectedSlotForBooking.booked;
 
-  document.getElementById("bookModalTitle").innerText = selectedSlotForBooking.title;
-  document.getElementById("bookModalDetails").innerText = `Time: ${selectedSlotForBooking.time} | Instructor: ${selectedSlotForBooking.instructor}`;
+  const titleEl = document.getElementById("bookModalTitle");
+  const detailsEl = document.getElementById("bookModalDetails");
+  if (titleEl) titleEl.innerText = selectedSlotForBooking.title;
+  if (detailsEl) detailsEl.innerText = `Time: ${selectedSlotForBooking.time} | Instructor: ${selectedSlotForBooking.instructor}`;
   
   const alertEl = document.getElementById("spotCapacityAlert");
   const alertText = document.getElementById("spotAlertText");
 
-  if (spotsLeft === 0) {
-    alertEl.style.backgroundColor = "#f2f4f4";
-    alertEl.style.borderColor = "#d5dbdb";
-    alertEl.style.color = "#7f8c8d";
-    alertText.innerText = `This session is FULL (Max ${selectedSlotForBooking.max}). You will be added to the priority waitlist.`;
-  } else if (spotsLeft <= 2) {
-    alertEl.style.backgroundColor = "#fdf2e9";
-    alertEl.style.borderColor = "#fae5d3";
-    alertEl.style.color = "#b9770e";
-    alertText.innerText = `⚠️ Hurry! Only ${spotsLeft} spot${spotsLeft > 1 ? 's' : ''} remaining out of ${selectedSlotForBooking.max} max capacity.`;
-  } else {
-    alertEl.style.backgroundColor = "#eaf0e8";
-    alertEl.style.borderColor = "#d5e1d3";
-    alertEl.style.color = "#323b2c";
-    alertText.innerText = `✓ ${spotsLeft} spots available out of ${selectedSlotForBooking.max} max capacity.`;
+  if (alertEl && alertText) {
+    if (spotsLeft === 0) {
+      alertEl.style.backgroundColor = "#f2f4f4";
+      alertEl.style.borderColor = "#d5dbdb";
+      alertEl.style.color = "#7f8c8d";
+      alertText.innerText = `This session is FULL (Max ${selectedSlotForBooking.max}). You will be added to the priority waitlist.`;
+    } else if (spotsLeft <= 2) {
+      alertEl.style.backgroundColor = "#fdf2e9";
+      alertEl.style.borderColor = "#fae5d3";
+      alertEl.style.color = "#b9770e";
+      alertText.innerText = `⚠️ Hurry! Only ${spotsLeft} spot${spotsLeft > 1 ? 's' : ''} remaining out of ${selectedSlotForBooking.max} max capacity.`;
+    } else {
+      alertEl.style.backgroundColor = "#eaf0e8";
+      alertEl.style.borderColor = "#d5e1d3";
+      alertEl.style.color = "#323b2c";
+      alertText.innerText = `✓ ${spotsLeft} spots available out of ${selectedSlotForBooking.max} max capacity.`;
+    }
   }
 
-  document.getElementById("bookingModal").classList.add("active");
+  const bm = document.getElementById("bookingModal");
+  if (bm) bm.classList.add("active");
 }
 
 function closeBookingModal() {
-  document.getElementById("bookingModal").classList.remove("active");
+  const bm = document.getElementById("bookingModal");
+  if (bm) bm.classList.remove("active");
 }
 
 function handleClassBookingSubmit(e) {
   e.preventDefault();
   if (!selectedSlotForBooking) return;
 
-  const name = document.getElementById("bookName").value;
+  const nameEl = document.getElementById("bookName");
+  const name = nameEl ? nameEl.value : "Member";
 
   if (selectedSlotForBooking.booked < selectedSlotForBooking.max) {
     selectedSlotForBooking.booked += 1;
@@ -335,26 +389,36 @@ function handleClassBookingSubmit(e) {
 
 // MEMBER AUTHENTICATION & DASHBOARD
 function openAuthModal() {
-  document.getElementById("authModal").classList.add("active");
+  const am = document.getElementById("authModal");
+  if (am) am.classList.add("active");
 }
 
 function closeAuthModal() {
-  document.getElementById("authModal").classList.remove("active");
+  const am = document.getElementById("authModal");
+  if (am) am.classList.remove("active");
 }
 
 function handleLoginSubmit(e) {
   e.preventDefault();
-  const email = document.getElementById("loginEmail").value;
+  const emailEl = document.getElementById("loginEmail");
+  const email = emailEl ? emailEl.value : "member@example.com";
   isLoggedIn = true;
 
-  document.getElementById("loginBtnText").innerText = "My Account";
-  document.getElementById("authFormView").style.display = "none";
-  document.getElementById("authDashboardView").style.display = "block";
+  const loginBtnText = document.getElementById("loginBtnText");
+  if (loginBtnText) loginBtnText.innerText = "My Account";
   
-  if (email.includes("mostafa") || email.includes("Mostafa")) {
-    document.getElementById("dashUserName").innerText = "Mostafa M.";
-  } else {
-    document.getElementById("dashUserName").innerText = email.split("@")[0];
+  const formView = document.getElementById("authFormView");
+  const dashView = document.getElementById("authDashboardView");
+  if (formView) formView.style.display = "none";
+  if (dashView) dashView.style.display = "block";
+  
+  const nameEl = document.getElementById("dashUserName");
+  if (nameEl) {
+    if (email.includes("mostafa") || email.includes("Mostafa")) {
+      nameEl.innerText = "Mostafa M.";
+    } else {
+      nameEl.innerText = email.split("@")[0];
+    }
   }
 
   renderDashboardContent('bookings');
@@ -362,18 +426,29 @@ function handleLoginSubmit(e) {
 
 function handleGoogleLogin() {
   isLoggedIn = true;
-  document.getElementById("loginBtnText").innerText = "My Account";
-  document.getElementById("authFormView").style.display = "none";
-  document.getElementById("authDashboardView").style.display = "block";
-  document.getElementById("dashUserName").innerText = "Mostafa Mansour";
+  const loginBtnText = document.getElementById("loginBtnText");
+  if (loginBtnText) loginBtnText.innerText = "My Account";
+  
+  const formView = document.getElementById("authFormView");
+  const dashView = document.getElementById("authDashboardView");
+  if (formView) formView.style.display = "none";
+  if (dashView) dashView.style.display = "block";
+  
+  const nameEl = document.getElementById("dashUserName");
+  if (nameEl) nameEl.innerText = "Mostafa Mansour";
+
   renderDashboardContent('bookings');
 }
 
 function handleLogout() {
   isLoggedIn = false;
-  document.getElementById("loginBtnText").innerText = "Member Login";
-  document.getElementById("authFormView").style.display = "block";
-  document.getElementById("authDashboardView").style.display = "none";
+  const loginBtnText = document.getElementById("loginBtnText");
+  if (loginBtnText) loginBtnText.innerText = "Member Login";
+  
+  const formView = document.getElementById("authFormView");
+  const dashView = document.getElementById("authDashboardView");
+  if (formView) formView.style.display = "block";
+  if (dashView) dashView.style.display = "none";
   closeAuthModal();
 }
 
@@ -381,17 +456,32 @@ function handleLogout() {
 function showDashTab(tabName) {
   document.querySelectorAll('.dash-nav-item').forEach(el => el.classList.remove('active'));
   
-  if (tabName === 'bookings') document.getElementById('tabBookingsBtn').classList.add('active');
-  if (tabName === 'packages') document.getElementById('tabPackagesBtn').classList.add('active');
-  if (tabName === 'payments') document.getElementById('tabPaymentsBtn').classList.add('active');
-  if (tabName === 'history') document.getElementById('tabHistoryBtn').classList.add('active');
+  if (tabName === 'bookings') {
+    const el = document.getElementById('tabBookingsBtn');
+    if (el) el.classList.add('active');
+  }
+  if (tabName === 'packages') {
+    const el = document.getElementById('tabPackagesBtn');
+    if (el) el.classList.add('active');
+  }
+  if (tabName === 'payments') {
+    const el = document.getElementById('tabPaymentsBtn');
+    if (el) el.classList.add('active');
+  }
+  if (tabName === 'history') {
+    const el = document.getElementById('tabHistoryBtn');
+    if (el) el.classList.add('active');
+  }
 
   renderDashboardContent(tabName);
 }
 
 function renderDashboardContent(tabName) {
   const contentArea = document.getElementById("dashContentArea");
-  document.getElementById("dashBookingCount").innerText = `${userBookings.length} Active`;
+  if (!contentArea) return;
+
+  const countEl = document.getElementById("dashBookingCount");
+  if (countEl) countEl.innerText = `${userBookings.length} Active`;
 
   if (tabName === 'bookings') {
     if (userBookings.length === 0) {

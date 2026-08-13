@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pricing | Everything Fitness Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- TOP ANNOUNCEMENT BANNER -->
+  <div class="top-banner">
+    <div class="container top-banner-content">
+      <span>✨ <strong>FREE Introductory Session:</strong> Experience Reformer Pilates, Yoga, Zumba, or 1-On-1 Assisted Stretching — 100% Free!</span>
+      <button class="btn-banner" onclick="openIntroModal()">Claim Free Trial</button>
+    </div>
+  </div>
+
+  <!-- NAVIGATION HEADER -->
+  <header class="site-header" id="siteHeader">
+    <div class="container header-container">
+      <a href="index.html" class="brand-logo">
+        <svg class="logo-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+          <circle cx="12" cy="12" r="10"/>
+          <path d="M12 6c-3 3-3 7 0 10 3-3 3-7 0-10z"/>
+          <path d="M6 12c3-3 7-3 10 0-3 3-7 3-10 0z"/>
+        </svg>
+        <div class="logo-text">
+          <span class="logo-title">EVERYTHING FITNESS</span>
+          <span class="logo-subtitle">REFORMER PILATES · YOGA · DANCE · 1-ON-1 ASSISTED STRETCHING</span>
+        </div>
+      </a>
+
+      <nav class="main-nav">
+        <ul>
+          <li><a href="schedule.html" class="nav-link">Class Schedules</a></li>
+          <li class="has-megamenu">
+            <a href="contact.html" class="nav-link">Services <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></a>
+            <div class="mega-menu dropdown-sm">
+              <div class="mega-col">
+                <h4><span class="icon">✨</span> SPECIAL SERVICES</h4>
+                <ul>
+                  <li><a href="contact.html?subject=Private%20Parties">Private Parties</a></li>
+                  <li><a href="contact.html?subject=Corporate%20Wellness">Corporate Wellness</a></li>
+                  <li><a href="schedule.html?type=stretch">1-On-1 Stretch Therapy</a></li>
+                </ul>
+              </div>
+            </div>
+          </li>
+          <li><a href="pricing.html" class="nav-link active">Pricing</a></li>
+          <li><a href="instructors.html" class="nav-link">Instructors</a></li>
+          <li><a href="contact.html" class="nav-link">Contact Us</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <button class="btn btn-outline" id="loginBtn" onclick="openAuthModal()">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          <span id="loginBtnText">Member Login</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- PRICING & COMPETITOR COMPARISON SECTION -->
+  <section class="pricing-section">
+    <div class="container">
+      <div class="section-header text-center">
+        <span class="section-tag">UNBEATABLE VALUE</span>
+        <h2>More Options Than Single Studios · Lower Cost</h2>
+        <p>Choose between recurring Monthly Memberships or flexible Class Packs — both designed to beat single-focus boutique studio prices.</p>
+      </div>
+
+      <!-- SECTION 1: MONTHLY MEMBERSHIPS (AUTO-RENEW) WITH 10% FAMILY DISCOUNT CALLOUT -->
+      <div class="pricing-category-block">
+        <div class="category-title-box">
+          <span class="category-tag">OPTION 1</span>
+          <h3>Monthly Memberships (Auto-Renew)</h3>
+          <p>Best for regular studio visitors who want the lowest per-class rate & unlimited multi-modality access.</p>
+          <div class="family-discount-banner">
+            🎁 <strong>Family Perk:</strong> 10% Family Discount available for additional household members on all monthly plans!
+          </div>
+        </div>
+
+        <div class="pricing-grid">
+          <!-- MEMBERSHIP CARD 1: Starter -->
+          <div class="pricing-card">
+            <div class="card-header">
+              <h3>Starter Balance</h3>
+              <p>Ideal for beginners building a weekly routine.</p>
+              <div class="price-box">
+                <span class="currency">$</span>
+                <span class="price-val">79</span>
+                <span class="period">/month</span>
+              </div>
+              <span class="price-sub">4 classes / month ($19.75/class)</span>
+            </div>
+            <ul class="pricing-features">
+              <li>✓ Access to Reformer, Yoga & Zumba</li>
+              <li>✓ Small class sizes with personalized cues</li>
+              <li>✓ Online booking & 12hr cancel grace</li>
+              <li>✓ <strong>10% Family Discount</strong> available</li>
+              <li>✓ 10% off Assisted Stretch add-ons</li>
+            </ul>
+            <button class="btn btn-outline btn-full" onclick="selectPlan('Starter Balance Membership', '$79/mo')">Select Starter</button>
+          </div>
+
+          <!-- MEMBERSHIP CARD 2: Total Balance Unlimited (POPULAR) -->
+          <div class="pricing-card featured-pricing">
+            <div class="popular-ribbon">MOST POPULAR</div>
+            <div class="card-header">
+              <h3>Unlimited Everything Pass</h3>
+              <p>Unlimited Reformer Pilates, Yoga & Zumba Classes!</p>
+              <div class="price-box">
+                <span class="currency">$</span>
+                <span class="price-val">149</span>
+                <span class="period">/month</span>
+              </div>
+              <span class="price-sub">Cheaper than Club Pilates & YogaSix!</span>
+            </div>
+            <ul class="pricing-features">
+              <li>✓ <strong>UNLIMITED</strong> Reformer, Yoga & Zumba</li>
+              <li>✓ 14-day advance class booking window</li>
+              <li>✓ Priority waitlist placement</li>
+              <li>✓ <strong>10% Family Discount</strong> available</li>
+              <li>✓ 1 FREE 25-min Assisted Stretch per month</li>
+              <li>✓ 2 Guest passes every month</li>
+            </ul>
+            <button class="btn btn-primary btn-full" onclick="selectPlan('Unlimited Everything Membership', '$149/mo')">Claim Unlimited Access</button>
+          </div>
+
+          <!-- MEMBERSHIP CARD 3: VIP All-Access + Stretch -->
+          <div class="pricing-card">
+            <div class="card-header">
+              <h3>VIP All-Access + Stretch</h3>
+              <p>Unlimited Studio Classes + Dedicated 1-On-1 Assisted Stretch.</p>
+              <div class="price-box">
+                <span class="currency">$</span>
+                <span class="price-val">219</span>
+                <span class="period">/month</span>
+              </div>
+              <span class="price-sub">Includes 2x 1-On-1 Stretch Sessions ($120 value)</span>
+            </div>
+            <ul class="pricing-features">
+              <li>✓ <strong>UNLIMITED</strong> Reformer, Yoga & Zumba</li>
+              <li>✓ <strong>2x 50-Min 1-On-1 Assisted Stretch</strong>/mo</li>
+              <li>✓ Guaranteed private stretch reservation</li>
+              <li>✓ <strong>10% Family Discount</strong> available</li>
+              <li>✓ Free retail & grip sock perks</li>
+              <li>✓ Pause/cancel anytime with 15 days notice</li>
+            </ul>
+            <button class="btn btn-outline btn-full" onclick="selectPlan('VIP All-Access + Stretch Membership', '$219/mo')">Select VIP</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- SECTION 2: FLEX CLASS PACKS (NO MONTHLY DUES) -->
+      <div class="pricing-category-block" style="margin-top: 60px;">
+        <div class="category-title-box">
+          <span class="category-tag">OPTION 2</span>
+          <h3>Flex Class Packs (Pay As You Go)</h3>
+          <p>Ideal for flexible schedules with no monthly commitments or auto-renewals.</p>
+        </div>
+
+        <div class="pricing-grid">
+          <!-- PACK CARD 1: 5-Class Pack -->
+          <div class="pricing-card">
+            <div class="card-header">
+              <h3>5-Class Pack</h3>
+              <p>Great for occasional studio visits & travelers.</p>
+              <div class="price-box">
+                <span class="currency">$</span>
+                <span class="price-val">115</span>
+                <span class="period"> / 5 classes</span>
+              </div>
+              <span class="price-sub">Valid 3 months ($23.00/class)</span>
+            </div>
+            <ul class="pricing-features">
+              <li>✓ Use across Reformer, Yoga & Zumba</li>
+              <li>✓ Zero monthly commitment</li>
+              <li>✓ Shareable with 1 family member</li>
+              <li>✓ Easy online booking</li>
+            </ul>
+            <button class="btn btn-outline btn-full" onclick="selectPlan('5-Class Pack', '$115')">Buy 5-Pack</button>
+          </div>
+
+          <!-- PACK CARD 2: 10-Class Pack (BEST VALUE PACK) -->
+          <div class="pricing-card featured-pricing">
+            <div class="popular-ribbon" style="background:#4a5b42;">BEST VALUE PACK</div>
+            <div class="card-header">
+              <h3>10-Class Pack</h3>
+              <p>Our most popular non-membership class package.</p>
+              <div class="price-box">
+                <span class="currency">$</span>
+                <span class="price-val">210</span>
+                <span class="period"> / 10 classes</span>
+              </div>
+              <span class="price-sub">Valid 6 months ($21.00/class)</span>
+            </div>
+            <ul class="pricing-features">
+              <li>✓ Use across Reformer, Yoga & Zumba</li>
+              <li>✓ Save $20 compared to single drop-ins</li>
+              <li>✓ 7-day advance booking window</li>
+              <li>✓ Includes 10% off stretch sessions</li>
+            </ul>
+            <button class="btn btn-primary btn-full" onclick="selectPlan('10-Class Pack', '$210')">Buy 10-Pack</button>
+          </div>
+
+          <!-- PACK CARD 3: 20-Class Pack -->
+          <div class="pricing-card">
+            <div class="card-header">
+              <h3>20-Class Pack</h3>
+              <p>Maximum savings per class without a monthly subscription.</p>
+              <div class="price-box">
+                <span class="currency">$</span>
+                <span class="price-val">380</span>
+                <span class="period"> / 20 classes</span>
+              </div>
+              <span class="price-sub">Valid 12 months ($19.00/class)</span>
+            </div>
+            <ul class="pricing-features">
+              <li>✓ Full 1-year expiration window</li>
+              <li>✓ Lowest per-class rate ($19/class)</li>
+              <li>✓ Shareable with friends & family</li>
+              <li>✓ Includes 1 free 25-min Assisted Stretch</li>
+            </ul>
+            <button class="btn btn-outline btn-full" onclick="selectPlan('20-Class Pack', '$380')">Buy 20-Pack</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- COMPETITOR COMPARISON MATRIX -->
+      <div class="comparison-container" style="margin-top: 60px;">
+        <div class="comparison-header text-center">
+          <h3>How Everything Fitness Studio Compares to Single-Focus Studios</h3>
+          <p>See why our members save hundreds every year while getting broader wellness coverage.</p>
+        </div>
+
+        <div class="table-responsive">
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th>Feature / Offering</th>
+                <th class="highlight-col">Everything Fitness Studio</th>
+                <th>Club Pilates</th>
+                <th>YogaSix</th>
+                <th>StretchLab</th>
+                <th>Bay Club / City Sports</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Free Introductory Session</strong></td>
+                <td class="highlight-col"><span class="check-yes">✓ FREE (30 Min)</span></td>
+                <td><span class="check-yes">✓ FREE Demo</span></td>
+                <td><span class="check-no">❌ $19 Intro</span></td>
+                <td><span class="check-no">❌ $49 Demo</span></td>
+                <td><span class="check-no">❌ Day Pass Fee</span></td>
+              </tr>
+              <tr>
+                <td><strong>Unlimited Monthly Membership</strong></td>
+                <td class="highlight-col"><strong class="brand-price">$149 / mo</strong></td>
+                <td>$229 – $360 / mo</td>
+                <td>$179 – $199 / mo</td>
+                <td>$219 – $399 / mo</td>
+                <td>$180 – $280 / mo</td>
+              </tr>
+              <tr>
+                <td><strong>Reformer Pilates Included</strong></td>
+                <td class="highlight-col"><span class="check-yes">✓ Yes</span></td>
+                <td><span class="check-yes">✓ Yes</span></td>
+                <td><span class="check-no">❌ No Reformers</span></td>
+                <td><span class="check-no">❌ No Reformers</span></td>
+                <td><span class="check-no">❌ Extra $45/class</span></td>
+              </tr>
+              <tr>
+                <td><strong>Yoga & Zumba Included</strong></td>
+                <td class="highlight-col"><span class="check-yes">✓ Yes</span></td>
+                <td><span class="check-no">❌ No Zumba</span></td>
+                <td><span class="check-yes">✓ Yoga Only</span></td>
+                <td><span class="check-no">❌ No Classes</span></td>
+                <td><span class="check-yes">✓ Large Crowded</span></td>
+              </tr>
+              <tr>
+                <td><strong>1-On-1 Assisted Stretch Therapy</strong></td>
+                <td class="highlight-col"><span class="check-yes">✓ Included in VIP</span></td>
+                <td><span class="check-no">❌ No 1-on-1</span></td>
+                <td><span class="check-no">❌ No 1-on-1</span></td>
+                <td><span class="check-yes">✓ Stretch Only</span></td>
+                <td><span class="check-no">❌ Personal Trainer Fee</span></td>
+              </tr>
+              <tr>
+                <td><strong>Women-Only Sessions Available</strong></td>
+                <td class="highlight-col"><span class="check-yes">✓ Dedicated Daily Sessions</span></td>
+                <td><span class="check-no">❌ Co-ed Only</span></td>
+                <td><span class="check-no">❌ Co-ed Only</span></td>
+                <td><span class="check-no">❌ Open Floor</span></td>
+                <td><span class="check-no">❌ Co-ed Gym</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container footer-container">
+      <div class="footer-brand">
+        <div class="logo-text">
+          <span class="logo-title">EVERYTHING FITNESS</span>
+          <span class="logo-subtitle">REFORMER PILATES · YOGA · DANCE · 1-ON-1 ASSISTED STRETCHING</span>
+        </div>
+        <p class="footer-address-text">1240 Saratoga Ave, Suite 100, Saratoga, CA 95070</p>
+      </div>
+      <div class="footer-newsletter">
+        <h4>Stay Connected</h4>
+        <p>Receive exclusive intro specials and wellness tips.</p>
+        <div class="newsletter-input">
+          <input type="email" placeholder="Enter your email">
+          <button class="btn btn-primary" onclick="alert('Thank you for subscribing!')">Join</button>
+        </div>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <p>© 2026 Everything Fitness Studio LLC. All rights reserved.</p>
+      <div class="footer-legal">
+        <a href="#">Privacy Policy</a> · <a href="#">Terms of Service</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- MODALS -->
+  <div class="modal-overlay" id="introModal">
+    <div class="modal-card">
+      <button class="modal-close" onclick="closeIntroModal()">×</button>
+      <div class="modal-header">
+        <span class="modal-tag">100% FREE INTRODUCTORY SESSION</span>
+        <h2>Claim Your Free First Class</h2>
+        <p>Select your preferred modality below to secure your free trial spot.</p>
+      </div>
+      <form id="introForm" onsubmit="handleIntroSubmit(event)">
+        <div class="form-group">
+          <label>Select Free Intro Modality</label>
+          <div class="modality-radio-group">
+            <label class="radio-card">
+              <input type="radio" name="introModality" value="Reformer Pilates" checked>
+              <div class="radio-content">
+                <strong>Reformer Pilates Intro</strong>
+                <span>30-min machine orientation & core flow</span>
+              </div>
+            </label>
+            <label class="radio-card">
+              <input type="radio" name="introModality" value="Women-Only Session">
+              <div class="radio-content">
+                <strong>Women-Only Workout Trial</strong>
+                <span>Dedicated female-only Reformer, Yoga, or Zumba class</span>
+              </div>
+            </label>
+            <label class="radio-card">
+              <input type="radio" name="introModality" value="Yoga / Zumba Flow">
+              <div class="radio-content">
+                <strong>Yoga / Zumba Trial</strong>
+                <span>Full 50-min energizing or soothing class</span>
+              </div>
+            </label>
+            <label class="radio-card">
+              <input type="radio" name="introModality" value="1-On-1 Assisted Stretch">
+              <div class="radio-content">
+                <strong>1-On-1 Assisted Stretch Demo</strong>
+                <span>15-min mobility assessment & stretch</span>
+              </div>
+            </label>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label>Full Name</label><input type="text" id="introName" placeholder="Mostafa Mansour" required></div>
+          <div class="form-group"><label>Phone Number</label><input type="tel" id="introPhone" placeholder="(408) 555-0123" required></div>
+        </div>
+        <div class="form-group"><label>Email Address</label><input type="email" id="introEmail" placeholder="you@example.com" required></div>
+        <button type="submit" class="btn btn-primary btn-full btn-lg">Confirm My Free Spot</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="authModal">
+    <div class="modal-card auth-modal-card">
+      <button class="modal-close" onclick="closeAuthModal()">×</button>
+      <div id="authFormView">
+        <div class="modal-header text-center">
+          <h2>Welcome Back!</h2>
+          <p>Log in to your Everything Fitness Studio account.</p>
+        </div>
+        <form id="loginForm" onsubmit="handleLoginSubmit(event)">
+          <div class="form-group"><label>Email Address</label><input type="email" id="loginEmail" value="mostafa@example.com" required></div>
+          <div class="form-group"><label>Password</label><input type="password" id="loginPassword" value="••••••••" required></div>
+          <button type="submit" class="btn btn-primary btn-full btn-lg">Log In</button>
+        </form>
+      </div>
+      <div id="authDashboardView" style="display: none;">
+        <div class="user-profile-header">
+          <div class="avatar-circle">MM</div>
+          <div><h3>Mostafa M.</h3><span class="user-tier-badge">Unlimited Everything VIP Member</span></div>
+        </div>
+        <div class="dash-content-area" id="dashContentArea"></div>
+        <button class="btn btn-outline btn-full logout-btn" onclick="handleLogout()">Log Out</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

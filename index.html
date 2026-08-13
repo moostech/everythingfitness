@@ -22,7 +22,7 @@
   <!-- NAVIGATION HEADER -->
   <header class="site-header" id="siteHeader">
     <div class="container header-container">
-      <a href="#" class="brand-logo">
+      <a href="index.html" class="brand-logo">
         <svg class="logo-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
           <circle cx="12" cy="12" r="10"/>
           <path d="M12 6c-3 3-3 7 0 10 3-3 3-7 0-10z"/>
@@ -36,47 +36,23 @@
 
       <nav class="main-nav">
         <ul>
-          <!-- TAB 1: CLASS SCHEDULES -->
+          <li><a href="schedule.html" class="nav-link">Class Schedules</a></li>
           <li class="has-megamenu">
-            <a href="#schedule" class="nav-link active">Class Schedules <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></a>
-            <div class="mega-menu dropdown-sm">
-              <div class="mega-col">
-                <h4><span class="icon">🧘‍♀️</span> EXPLORE CLASSES</h4>
-                <ul>
-                  <li><a href="#schedule" onclick="filterScheduleAndScroll('all')">Full Class Schedule</a></li>
-                  <li><a href="#schedule" onclick="filterScheduleAndScroll('reformer')">Reformer Pilates</a></li>
-                  <li><a href="#schedule" onclick="filterScheduleAndScroll('yoga')">Yoga Flow</a></li>
-                  <li><a href="#schedule" onclick="filterScheduleAndScroll('zumba')">High-Energy Zumba / U-Jam</a></li>
-                  <li><a href="#schedule" onclick="filterScheduleAndScroll('stretch')">1-On-1 Assisted Stretch</a></li>
-                  <li><a href="#women-only" style="color: var(--primary-sage-dark); font-weight: 700;">Women Only Workouts</a></li>
-                </ul>
-              </div>
-            </div>
-          </li>
-
-          <!-- TAB 2: SERVICES -->
-          <li class="has-megamenu">
-            <a href="#services" class="nav-link">Services <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></a>
+            <a href="contact.html" class="nav-link">Services <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></a>
             <div class="mega-menu dropdown-sm">
               <div class="mega-col">
                 <h4><span class="icon">✨</span> SPECIAL SERVICES</h4>
                 <ul>
-                  <li><a href="#contact" onclick="openContactModal('Private Parties')">Private Parties</a></li>
-                  <li><a href="#contact" onclick="openContactModal('Corporate Wellness')">Corporate Wellness</a></li>
-                  <li><a href="#schedule" onclick="filterScheduleAndScroll('stretch')">1-On-1 Stretch Therapy</a></li>
+                  <li><a href="contact.html?subject=Private%20Parties">Private Parties</a></li>
+                  <li><a href="contact.html?subject=Corporate%20Wellness">Corporate Wellness</a></li>
+                  <li><a href="schedule.html?type=stretch">1-On-1 Stretch Therapy</a></li>
                 </ul>
               </div>
             </div>
           </li>
-
-          <!-- TAB 3: PRICING -->
-          <li><a href="#pricing" class="nav-link">Pricing</a></li>
-
-          <!-- TAB 4: INSTRUCTORS -->
-          <li><a href="#instructors" class="nav-link">Instructors</a></li>
-
-          <!-- TAB 5: CONTACT US -->
-          <li><a href="#contact" class="nav-link">Contact Us</a></li>
+          <li><a href="pricing.html" class="nav-link">Pricing</a></li>
+          <li><a href="instructors.html" class="nav-link">Instructors</a></li>
+          <li><a href="contact.html" class="nav-link">Contact Us</a></li>
         </ul>
       </nav>
 
@@ -100,7 +76,7 @@
         </p>
         <div class="hero-cta-group">
           <button class="btn btn-lg btn-primary" onclick="openIntroModal()">Book Your First Class Free</button>
-          <button class="btn btn-lg btn-secondary" onclick="scrollToSection('schedule')">View Class Schedule</button>
+          <a href="schedule.html" class="btn btn-lg btn-secondary">View Class Schedule</a>
         </div>
 
         <!-- HERO PROMO CALLOUT BOX -->
@@ -114,33 +90,33 @@
       <div class="hero-quadrant-wrapper">
         <div class="quadrant-grid">
           <!-- Item 1: Reformer Pilates -->
-          <div class="quadrant-item" onclick="filterScheduleAndScroll('reformer')">
+          <a href="schedule.html?type=reformer" class="quadrant-item">
             <img src="img/pilates.png" alt="Reformer Pilates" onerror="this.src='https://images.unsplash.com/photo-1599447421416-3414500d18a5?auto=format&fit=crop&w=600&q=80'">
             <div class="quadrant-overlay">
               <span>Reformer Pilates</span>
             </div>
-          </div>
+          </a>
           <!-- Item 2: Yoga Flow -->
-          <div class="quadrant-item" onclick="filterScheduleAndScroll('yoga')">
+          <a href="schedule.html?type=yoga" class="quadrant-item">
             <img src="img/yoga.png" alt="Yoga Flow" onerror="this.src='https://images.unsplash.com/photo-1545205597-3d9d02c29597?auto=format&fit=crop&w=600&q=80'">
             <div class="quadrant-overlay">
               <span>Yoga Flow</span>
             </div>
-          </div>
+          </a>
           <!-- Item 3: High-Energy Zumba -->
-          <div class="quadrant-item" onclick="filterScheduleAndScroll('zumba')">
+          <a href="schedule.html?type=zumba" class="quadrant-item">
             <img src="img/zumba.png" alt="High-Energy Zumba" onerror="this.src='https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=600&q=80'">
             <div class="quadrant-overlay">
               <span>High-Energy Zumba</span>
             </div>
-          </div>
+          </a>
           <!-- Item 4: 1-On-1 Assisted Stretching -->
-          <div class="quadrant-item" onclick="filterScheduleAndScroll('stretch')">
+          <a href="schedule.html?type=stretch" class="quadrant-item">
             <img src="img/stretch.png" alt="1-On-1 Assisted Stretching" onerror="this.src='https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=600&q=80'">
             <div class="quadrant-overlay">
               <span>1-On-1 Assisted Stretching</span>
             </div>
-          </div>
+          </a>
         </div>
 
         <!-- CENTERED FREE TRIAL BADGE DIRECTLY UNDER 4 IMAGES -->
@@ -153,7 +129,7 @@
   </section>
 
   <!-- FOUR MODALITIES OVERVIEW SECTION -->
-  <section id="classes" class="offerings-section">
+  <section class="offerings-section">
     <div class="container">
       <div class="section-header text-center">
         <span class="section-tag">FOUR CORE MODALITIES</span>
@@ -176,7 +152,7 @@
             <li>✓ Spine alignment & mobility</li>
             <li>✓ Tailored posture cues</li>
           </ul>
-          <button class="btn btn-text" onclick="filterScheduleAndScroll('reformer')">View Reformer Classes →</button>
+          <a href="schedule.html?type=reformer" class="btn btn-text">View Reformer Classes →</a>
         </div>
 
         <!-- Card 2: Yoga Flow -->
@@ -193,7 +169,7 @@
             <li>✓ Deep flexibility & stress release</li>
             <li>✓ Mind-body synergy</li>
           </ul>
-          <button class="btn btn-text" onclick="filterScheduleAndScroll('yoga')">View Yoga Classes →</button>
+          <a href="schedule.html?type=yoga" class="btn btn-text">View Yoga Classes →</a>
         </div>
 
         <!-- Card 3: High-Energy Zumba / U-Jam -->
@@ -210,7 +186,7 @@
             <li>✓ Full-body coordination & endorphins</li>
             <li>✓ Fun, uplifting atmosphere</li>
           </ul>
-          <button class="btn btn-text" onclick="filterScheduleAndScroll('zumba')">View Zumba Classes →</button>
+          <a href="schedule.html?type=zumba" class="btn btn-text">View Zumba Classes →</a>
         </div>
 
         <!-- Card 4: 1-On-1 Assisted Stretching -->
@@ -227,14 +203,14 @@
             <li>✓ Relieves lower back & hip tightness</li>
             <li>✓ Dedicated private stretch table</li>
           </ul>
-          <button class="btn btn-text" onclick="filterScheduleAndScroll('stretch')">Reserve Stretch Table →</button>
+          <a href="schedule.html?type=stretch" class="btn btn-text">Reserve Stretch Table →</a>
         </div>
       </div>
     </div>
   </section>
 
   <!-- WOMEN-ONLY WORKOUTS HIGHLIGHT SECTION -->
-  <section id="women-only" class="women-only-section">
+  <section class="women-only-section">
     <div class="container">
       <div class="intro-promo-card women-promo-card">
         <div class="intro-promo-text">
@@ -248,465 +224,15 @@
           </div>
         </div>
         <div class="intro-promo-cta">
-          <button class="btn btn-lg btn-primary women-btn" onclick="openWomenOnlyModal()">Book Women-Only Class</button>
+          <a href="schedule.html?type=women" class="btn btn-lg btn-primary women-btn">Book Women-Only Class</a>
           <small>Available Daily · All Fitness Levels Welcome</small>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- CLASS SCHEDULE SECTION (ROW-BASED TIME LAYOUT) -->
-  <section id="schedule" class="schedule-section">
-    <div class="container">
-      <div class="section-header text-between">
-        <div>
-          <span class="section-tag">LIVE STUDIO SCHEDULE</span>
-          <h2>Daily Schedule (Ordered by Time)</h2>
-        </div>
-        <div class="header-btns">
-          <button class="btn btn-outline" onclick="resetScheduleFilters()">Reset Filters</button>
-          <button class="btn btn-primary" onclick="openIntroModal()">Book Free Intro</button>
-        </div>
-      </div>
-
-      <!-- SCHEDULE FILTERS & NAVIGATION -->
-      <div class="schedule-controls">
-        <div class="date-navigator">
-          <button class="btn-icon" id="prevWeek" onclick="changeWeek(-1)">‹</button>
-          <span class="current-date-range" id="dateRangeText">May 18 – May 24, 2026</span>
-          <button class="btn-icon" id="nextWeek" onclick="changeWeek(1)">›</button>
-        </div>
-
-        <div class="filter-group">
-          <label>Modality Filter:</label>
-          <select id="typeFilter" onchange="applyScheduleFilters()">
-            <option value="all">All Class Types</option>
-            <option value="reformer">Reformer Pilates</option>
-            <option value="yoga">Yoga Flow</option>
-            <option value="zumba">High-Energy Zumba / U-Jam</option>
-            <option value="stretch">1-On-1 Assisted Stretch</option>
-            <option value="women">Women-Only Sessions</option>
-          </select>
-        </div>
-
-        <div class="filter-group">
-          <label>Instructor:</label>
-          <select id="instructorFilter" onchange="applyScheduleFilters()">
-            <option value="all">All Instructors</option>
-            <option value="Mariam">Mariam K. (Pilates Lead)</option>
-            <option value="Sora">Sora T. (Yoga Master)</option>
-            <option value="James">James L. (Lead Flexologist)</option>
-            <option value="Elena">Elena R. (Zumba Director)</option>
-          </select>
-        </div>
-      </div>
-
-      <!-- DAY TABS -->
-      <div class="day-tabs" id="dayTabsContainer">
-        <!-- JS populates day tabs (SUN, MON, TUE, WED, THU, FRI, SAT) -->
-      </div>
-
-      <!-- SCHEDULE TIME-ROW LIST CONTAINER -->
-      <div class="schedule-rows-container" id="scheduleGrid">
-        <!-- JS populates time-based rows with capacity & spots remaining -->
-      </div>
-    </div>
-  </section>
-
-  <!-- PRICING & COMPETITOR COMPARISON SECTION -->
-  <section id="pricing" class="pricing-section">
-    <div class="container">
-      <div class="section-header text-center">
-        <span class="section-tag">UNBEATABLE VALUE</span>
-        <h2>More Options Than Single Studios · Lower Cost</h2>
-        <p>Choose between recurring Monthly Memberships or flexible Class Packs — both designed to beat single-focus boutique studio prices.</p>
-      </div>
-
-      <!-- SECTION 1: MONTHLY MEMBERSHIPS (AUTO-RENEW) -->
-      <div class="pricing-category-block">
-        <div class="category-title-box">
-          <span class="category-tag">OPTION 1</span>
-          <h3>Monthly Memberships (Auto-Renew)</h3>
-          <p>Best for regular studio visitors who want the lowest per-class rate & unlimited multi-modality access.</p>
-          <div class="family-discount-banner">
-            🎁 <strong>Family Perk:</strong> 10% Family Discount available for additional household members on all monthly plans!
-          </div>
-        </div>
-
-        <div class="pricing-grid">
-          <!-- MEMBERSHIP CARD 1: Starter -->
-          <div class="pricing-card">
-            <div class="card-header">
-              <h3>Starter Balance</h3>
-              <p>Ideal for beginners building a weekly routine.</p>
-              <div class="price-box">
-                <span class="currency">$</span>
-                <span class="price-val">79</span>
-                <span class="period">/month</span>
-              </div>
-              <span class="price-sub">4 classes / month ($19.75/class)</span>
-            </div>
-            <ul class="pricing-features">
-              <li>✓ Access to Reformer, Yoga & Zumba</li>
-              <li>✓ Small class sizes with personalized cues</li>
-              <li>✓ Online booking & 12hr cancel grace</li>
-              <li>✓ <strong>10% Family Discount</strong> available</li>
-              <li>✓ 10% off Assisted Stretch add-ons</li>
-            </ul>
-            <button class="btn btn-outline btn-full" onclick="selectPlan('Starter Balance Membership', '$79/mo')">Select Starter</button>
-          </div>
-
-          <!-- MEMBERSHIP CARD 2: Total Balance Unlimited (POPULAR) -->
-          <div class="pricing-card featured-pricing">
-            <div class="popular-ribbon">MOST POPULAR</div>
-            <div class="card-header">
-              <h3>Unlimited Everything Pass</h3>
-              <p>Unlimited Reformer Pilates, Yoga & Zumba Classes!</p>
-              <div class="price-box">
-                <span class="currency">$</span>
-                <span class="price-val">149</span>
-                <span class="period">/month</span>
-              </div>
-              <span class="price-sub">Cheaper than Club Pilates & YogaSix!</span>
-            </div>
-            <ul class="pricing-features">
-              <li>✓ <strong>UNLIMITED</strong> Reformer, Yoga & Zumba</li>
-              <li>✓ 14-day advance class booking window</li>
-              <li>✓ Priority waitlist placement</li>
-              <li>✓ <strong>10% Family Discount</strong> available</li>
-              <li>✓ 1 FREE 25-min Assisted Stretch per month</li>
-              <li>✓ 2 Guest passes every month</li>
-            </ul>
-            <button class="btn btn-primary btn-full" onclick="selectPlan('Unlimited Everything Membership', '$149/mo')">Claim Unlimited Access</button>
-          </div>
-
-          <!-- MEMBERSHIP CARD 3: VIP All-Access + Stretch -->
-          <div class="pricing-card">
-            <div class="card-header">
-              <h3>VIP All-Access + Stretch</h3>
-              <p>Unlimited Studio Classes + Dedicated 1-On-1 Assisted Stretch.</p>
-              <div class="price-box">
-                <span class="currency">$</span>
-                <span class="price-val">219</span>
-                <span class="period">/month</span>
-              </div>
-              <span class="price-sub">Includes 2x 1-On-1 Stretch Sessions ($120 value)</span>
-            </div>
-            <ul class="pricing-features">
-              <li>✓ <strong>UNLIMITED</strong> Reformer, Yoga & Zumba</li>
-              <li>✓ <strong>2x 50-Min 1-On-1 Assisted Stretch</strong>/mo</li>
-              <li>✓ Guaranteed private stretch reservation</li>
-              <li>✓ <strong>10% Family Discount</strong> available</li>
-              <li>✓ Free retail & grip sock perks</li>
-              <li>✓ Pause/cancel anytime with 15 days notice</li>
-            </ul>
-            <button class="btn btn-outline btn-full" onclick="selectPlan('VIP All-Access + Stretch Membership', '$219/mo')">Select VIP</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- SECTION 2: FLEX CLASS PACKS (NO MONTHLY DUES) -->
-      <div class="pricing-category-block" style="margin-top: 60px;">
-        <div class="category-title-box">
-          <span class="category-tag">OPTION 2</span>
-          <h3>Flex Class Packs (Pay As You Go)</h3>
-          <p>Ideal for flexible schedules with no monthly commitments or auto-renewals.</p>
-        </div>
-
-        <div class="pricing-grid">
-          <!-- PACK CARD 1: 5-Class Pack -->
-          <div class="pricing-card">
-            <div class="card-header">
-              <h3>5-Class Pack</h3>
-              <p>Great for occasional studio visits & travelers.</p>
-              <div class="price-box">
-                <span class="currency">$</span>
-                <span class="price-val">115</span>
-                <span class="period"> / 5 classes</span>
-              </div>
-              <span class="price-sub">Valid 3 months ($23.00/class)</span>
-            </div>
-            <ul class="pricing-features">
-              <li>✓ Use across Reformer, Yoga & Zumba</li>
-              <li>✓ Zero monthly commitment</li>
-              <li>✓ Shareable with 1 family member</li>
-              <li>✓ Easy online booking</li>
-            </ul>
-            <button class="btn btn-outline btn-full" onclick="selectPlan('5-Class Pack', '$115')">Buy 5-Pack</button>
-          </div>
-
-          <!-- PACK CARD 2: 10-Class Pack (BEST VALUE PACK) -->
-          <div class="pricing-card featured-pricing">
-            <div class="popular-ribbon" style="background:#4a5b42;">BEST VALUE PACK</div>
-            <div class="card-header">
-              <h3>10-Class Pack</h3>
-              <p>Our most popular non-membership class package.</p>
-              <div class="price-box">
-                <span class="currency">$</span>
-                <span class="price-val">210</span>
-                <span class="period"> / 10 classes</span>
-              </div>
-              <span class="price-sub">Valid 6 months ($21.00/class)</span>
-            </div>
-            <ul class="pricing-features">
-              <li>✓ Use across Reformer, Yoga & Zumba</li>
-              <li>✓ Save $20 compared to single drop-ins</li>
-              <li>✓ 7-day advance booking window</li>
-              <li>✓ Includes 10% off stretch sessions</li>
-            </ul>
-            <button class="btn btn-primary btn-full" onclick="selectPlan('10-Class Pack', '$210')">Buy 10-Pack</button>
-          </div>
-
-          <!-- PACK CARD 3: 20-Class Pack -->
-          <div class="pricing-card">
-            <div class="card-header">
-              <h3>20-Class Pack</h3>
-              <p>Maximum savings per class without a monthly subscription.</p>
-              <div class="price-box">
-                <span class="currency">$</span>
-                <span class="price-val">380</span>
-                <span class="period"> / 20 classes</span>
-              </div>
-              <span class="price-sub">Valid 12 months ($19.00/class)</span>
-            </div>
-            <ul class="pricing-features">
-              <li>✓ Full 1-year expiration window</li>
-              <li>✓ Lowest per-class rate ($19/class)</li>
-              <li>✓ Shareable with friends & family</li>
-              <li>✓ Includes 1 free 25-min Assisted Stretch</li>
-            </ul>
-            <button class="btn btn-outline btn-full" onclick="selectPlan('20-Class Pack', '$380')">Buy 20-Pack</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- COMPETITOR COMPARISON MATRIX -->
-      <div class="comparison-container" style="margin-top: 60px;">
-        <div class="comparison-header text-center">
-          <h3>How Everything Fitness Studio Compares to Single-Focus Studios</h3>
-          <p>See why our members save hundreds every year while getting broader wellness coverage.</p>
-        </div>
-
-        <div class="table-responsive">
-          <table class="comparison-table">
-            <thead>
-              <tr>
-                <th>Feature / Offering</th>
-                <th class="highlight-col">Everything Fitness Studio</th>
-                <th>Club Pilates</th>
-                <th>YogaSix</th>
-                <th>StretchLab</th>
-                <th>Bay Club / City Sports</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><strong>Free Introductory Session</strong></td>
-                <td class="highlight-col"><span class="check-yes">✓ FREE (30 Min)</span></td>
-                <td><span class="check-yes">✓ FREE Demo</span></td>
-                <td><span class="check-no">❌ $19 Intro</span></td>
-                <td><span class="check-no">❌ $49 Demo</span></td>
-                <td><span class="check-no">❌ Day Pass Fee</span></td>
-              </tr>
-              <tr>
-                <td><strong>Unlimited Monthly Membership</strong></td>
-                <td class="highlight-col"><strong class="brand-price">$149 / mo</strong></td>
-                <td>$229 – $360 / mo</td>
-                <td>$179 – $199 / mo</td>
-                <td>$219 – $399 / mo</td>
-                <td>$180 – $280 / mo</td>
-              </tr>
-              <tr>
-                <td><strong>Reformer Pilates Included</strong></td>
-                <td class="highlight-col"><span class="check-yes">✓ Yes</span></td>
-                <td><span class="check-yes">✓ Yes</span></td>
-                <td><span class="check-no">❌ No Reformers</span></td>
-                <td><span class="check-no">❌ No Reformers</span></td>
-                <td><span class="check-no">❌ Extra $45/class</span></td>
-              </tr>
-              <tr>
-                <td><strong>Yoga & Zumba Included</strong></td>
-                <td class="highlight-col"><span class="check-yes">✓ Yes</span></td>
-                <td><span class="check-no">❌ No Zumba</span></td>
-                <td><span class="check-yes">✓ Yoga Only</span></td>
-                <td><span class="check-no">❌ No Classes</span></td>
-                <td><span class="check-yes">✓ Large Crowded</span></td>
-              </tr>
-              <tr>
-                <td><strong>1-On-1 Assisted Stretch Therapy</strong></td>
-                <td class="highlight-col"><span class="check-yes">✓ Included in VIP</span></td>
-                <td><span class="check-no">❌ No 1-on-1</span></td>
-                <td><span class="check-no">❌ No 1-on-1</span></td>
-                <td><span class="check-yes">✓ Stretch Only</span></td>
-                <td><span class="check-no">❌ Personal Trainer Fee</span></td>
-              </tr>
-              <tr>
-                <td><strong>Women-Only Sessions Available</strong></td>
-                <td class="highlight-col"><span class="check-yes">✓ Dedicated Daily Sessions</span></td>
-                <td><span class="check-no">❌ Co-ed Only</span></td>
-                <td><span class="check-no">❌ Co-ed Only</span></td>
-                <td><span class="check-no">❌ Open Floor</span></td>
-                <td><span class="check-no">❌ Co-ed Gym</span></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- INSTRUCTORS SECTION -->
-  <section id="instructors" class="instructors-section">
-    <div class="container">
-      <div class="section-header text-center">
-        <span class="section-tag">EXPERT TEAM</span>
-        <h2>Instructors</h2>
-        <p>Our master instructors and flexologists bring decades of expertise in Reformer Pilates, Yoga, Zumba & U-Jam, and 1-On-1 Stretch Therapy.</p>
-      </div>
-
-      <div class="instructor-cards-grid">
-        <div class="instructor-profile-card">
-          <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=400&q=80" alt="Mariam K.">
-          <div class="instructor-info">
-            <h3>Mariam K.</h3>
-            <span class="role-tag">Master Pilates Instructor</span>
-            <p>Certified PMA Reformer Lead specializing in posture alignment, core power, and injury-prevention cues.</p>
-          </div>
-        </div>
-
-        <div class="instructor-profile-card">
-          <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=400&q=80" alt="James L.">
-          <div class="instructor-info">
-            <h3>James L.</h3>
-            <span class="role-tag">Lead Flexologist</span>
-            <p>1-On-1 Assisted Stretch specialist trained in PNF stretching, fascial release, and joint mobility therapy.</p>
-          </div>
-        </div>
-
-        <div class="instructor-profile-card">
-          <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&q=80" alt="Sora T.">
-          <div class="instructor-info">
-            <h3>Sora T.</h3>
-            <span class="role-tag">E-RYT 500 Yoga Master</span>
-            <p>Guided movement and breathwork specialist focused on Vinyasa flow, heat therapy, and mindfulness.</p>
-          </div>
-        </div>
-
-        <div class="instructor-profile-card">
-          <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=400&q=80" alt="Elena R.">
-          <div class="instructor-info">
-            <h3>Elena R.</h3>
-            <span class="role-tag">Zumba & Dance Director</span>
-            <p>High-energy cardio rhythm dance instructor bringing infectious energy, U-Jam beats, and fun routines.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- MEMBER REVIEWS SECTION -->
-  <section id="reviews" class="reviews-section">
-    <div class="container">
-      <div class="section-header text-center">
-        <span class="section-tag">MEMBER TESTIMONIALS</span>
-        <h2>Why Members Switched to Everything Fitness Studio</h2>
-      </div>
-
-      <div class="reviews-grid">
-        <div class="review-card">
-          <div class="stars">★★★★★</div>
-          <p>"My husband and I come together every Tuesday! He takes the Reformer Pilates class while I do Yoga Flow, then we meet up after. Having both under one membership is incredible!"</p>
-          <div class="reviewer">
-            <strong>Sarah & Mark M.</strong>
-            <span>Members for 8 months</span>
-          </div>
-        </div>
-        <div class="review-card">
-          <div class="stars">★★★★★</div>
-          <p>"The women-only workout sessions are amazing! Having female-only studio hours with Mariam gives such a welcoming, supportive vibe."</p>
-          <div class="reviewer">
-            <strong>Layla A.</strong>
-            <span>Member for 6 months</span>
-          </div>
-        </div>
-        <div class="review-card">
-          <div class="stars">★★★★★</div>
-          <p>"The free intro session hooked me immediately. The studio light aesthetic feels like a luxury spa, but the prices are lower than single-focus studios."</p>
-          <div class="reviewer">
-            <strong>Jessica L.</strong>
-            <span>Member for 5 months</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTACT & LOCATION -->
-  <section id="contact" class="contact-section">
-    <div class="container contact-container">
-      <div class="contact-info">
-        <span class="section-tag">VISIT OUR STUDIO</span>
-        <h2>Get in Touch & Visit Us</h2>
-        <p>Located conveniently in Saratoga with ample parking and modern amenities.</p>
-        <div class="contact-details">
-          <div class="detail-item">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            <div>
-              <strong>Studio Address</strong>
-              <span>1240 Saratoga Ave, Suite 100, Saratoga, CA 95070</span>
-            </div>
-          </div>
-          <div class="detail-item">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-            <div>
-              <strong>Phone & Text</strong>
-              <span>(408) 555-0192</span>
-            </div>
-          </div>
-          <div class="detail-item">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-            <div>
-              <strong>Email Us</strong>
-              <span>hello@everythingfitnessstudio.com</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="contact-form-box">
-        <h3>Send Us a Message</h3>
-        <form id="contactForm" onsubmit="handleContactSubmit(event)">
-          <div class="form-group">
-            <label>Your Name</label>
-            <input type="text" placeholder="e.g. Mostafa Mansour" required>
-          </div>
-          <div class="form-group">
-            <label>Email Address</label>
-            <input type="email" placeholder="you@example.com" required>
-          </div>
-          <div class="form-group">
-            <label>Interested In</label>
-            <select id="contactSubjectSelect">
-              <option>Free Introductory Session</option>
-              <option>Women Only Workouts</option>
-              <option>Private Parties</option>
-              <option>Corporate Wellness</option>
-              <option>Reformer Pilates Classes</option>
-              <option>1-On-1 Assisted Stretching</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label>Message</label>
-            <textarea rows="3" placeholder="How can we help you?"></textarea>
-          </div>
-          <button type="submit" class="btn btn-primary btn-full">Send Message</button>
-        </form>
-      </div>
-    </div>
-  </section>
-
-  <!-- PHILOSOPHY & STORY SECTION (UPDATED WITH PHILOSOPHY.PNG IMAGE SOURCE AND REVISED TEXT) -->
-  <section id="philosophy" class="about-section philosophy-end-section">
+  <!-- OUR PHILOSOPHY & STORY SECTION -->
+  <section class="about-section philosophy-end-section">
     <div class="container about-container">
       <div class="about-text">
         <span class="section-tag">OUR PHILOSOPHY & STORY</span>
@@ -833,50 +359,11 @@
     </div>
   </div>
 
-  <!-- MODAL 2: CLASS BOOKING CONFIRMATION -->
-  <div class="modal-overlay" id="bookingModal">
-    <div class="modal-card">
-      <button class="modal-close" onclick="closeBookingModal()">×</button>
-      <div class="modal-header">
-        <span class="modal-tag" id="bookModalTag">CLASS BOOKING</span>
-        <h2 id="bookModalTitle">Confirm Reservation</h2>
-        <p id="bookModalDetails">Time: -- | Instructor: --</p>
-      </div>
-
-      <div class="spot-capacity-alert" id="spotCapacityAlert">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
-        <span id="spotAlertText">Only 2 spots left! Book now to secure your spot.</span>
-      </div>
-
-      <form id="classBookingForm" onsubmit="handleClassBookingSubmit(event)">
-        <div class="form-group">
-          <label>Your Name</label>
-          <input type="text" id="bookName" placeholder="Mostafa M." required>
-        </div>
-        <div class="form-group">
-          <label>Email Address</label>
-          <input type="email" id="bookEmail" placeholder="you@example.com" required>
-        </div>
-        <div class="form-group">
-          <label>Pass / Membership Credit</label>
-          <select id="bookPassType">
-            <option value="intro">Free Introductory Pass ($0.00)</option>
-            <option value="unlimited">Use Active Membership Pass</option>
-            <option value="dropin">Single Drop-in ($28.00)</option>
-          </select>
-        </div>
-
-        <button type="submit" class="btn btn-primary btn-full btn-lg">Complete Reservation</button>
-      </form>
-    </div>
-  </div>
-
-  <!-- MODAL 3: MEMBER AUTHENTICATION & DASHBOARD -->
+  <!-- MODAL 2: MEMBER AUTHENTICATION & DASHBOARD -->
   <div class="modal-overlay" id="authModal">
     <div class="modal-card auth-modal-card">
       <button class="modal-close" onclick="closeAuthModal()">×</button>
 
-      <!-- AUTH FORM VIEW -->
       <div id="authFormView">
         <div class="modal-header text-center">
           <div class="auth-brand-icon">
@@ -914,7 +401,6 @@
         </div>
       </div>
 
-      <!-- MEMBER DASHBOARD VIEW (Shown after login) -->
       <div id="authDashboardView" style="display: none;">
         <div class="user-profile-header">
           <div class="avatar-circle">MM</div>

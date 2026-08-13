@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Class Schedules | Everything Fitness Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- TOP ANNOUNCEMENT BANNER -->
+  <div class="top-banner">
+    <div class="container top-banner-content">
+      <span>✨ <strong>FREE Introductory Session:</strong> Experience Reformer Pilates, Yoga, Zumba, or 1-On-1 Assisted Stretching — 100% Free!</span>
+      <button class="btn-banner" onclick="openIntroModal()">Claim Free Trial</button>
+    </div>
+  </div>
+
+  <!-- NAVIGATION HEADER -->
+  <header class="site-header" id="siteHeader">
+    <div class="container header-container">
+      <a href="index.html" class="brand-logo">
+        <svg class="logo-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+          <circle cx="12" cy="12" r="10"/>
+          <path d="M12 6c-3 3-3 7 0 10 3-3 3-7 0-10z"/>
+          <path d="M6 12c3-3 7-3 10 0-3 3-7 0-10z"/>
+        </svg>
+        <div class="logo-text">
+          <span class="logo-title">EVERYTHING FITNESS</span>
+          <span class="logo-subtitle">REFORMER PILATES · YOGA · DANCE · 1-ON-1 ASSISTED STRETCHING</span>
+        </div>
+      </a>
+
+      <nav class="main-nav">
+        <ul>
+          <li><a href="schedule.html" class="nav-link active">Class Schedules</a></li>
+          <li class="has-megamenu">
+            <a href="contact.html" class="nav-link">Services <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></a>
+            <div class="mega-menu dropdown-sm">
+              <div class="mega-col">
+                <h4><span class="icon">✨</span> SPECIAL SERVICES</h4>
+                <ul>
+                  <li><a href="contact.html?subject=Private%20Parties">Private Parties</a></li>
+                  <li><a href="contact.html?subject=Corporate%20Wellness">Corporate Wellness</a></li>
+                  <li><a href="schedule.html?type=stretch">1-On-1 Stretch Therapy</a></li>
+                </ul>
+              </div>
+            </div>
+          </li>
+          <li><a href="pricing.html" class="nav-link">Pricing</a></li>
+          <li><a href="instructors.html" class="nav-link">Instructors</a></li>
+          <li><a href="contact.html" class="nav-link">Contact Us</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <button class="btn btn-outline" id="loginBtn" onclick="openAuthModal()">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          <span id="loginBtnText">Member Login</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- CLASS SCHEDULE SECTION -->
+  <section class="schedule-section">
+    <div class="container">
+      <div class="section-header text-between">
+        <div>
+          <span class="section-tag">LIVE STUDIO SCHEDULE</span>
+          <h2>Class Schedules & Real-Time Capacity</h2>
+        </div>
+        <div class="header-btns">
+          <button class="btn btn-outline" onclick="resetScheduleFilters()">Reset Filters</button>
+          <button class="btn btn-primary" onclick="openIntroModal()">Book Free Intro</button>
+        </div>
+      </div>
+
+      <!-- SCHEDULE FILTERS & NAVIGATION -->
+      <div class="schedule-controls">
+        <div class="date-navigator">
+          <button class="btn-icon" id="prevWeek" onclick="changeWeek(-1)">‹</button>
+          <span class="current-date-range" id="dateRangeText">May 18 – May 24, 2026</span>
+          <button class="btn-icon" id="nextWeek" onclick="changeWeek(1)">›</button>
+        </div>
+
+        <div class="filter-group">
+          <label>Modality Filter:</label>
+          <select id="typeFilter" onchange="applyScheduleFilters()">
+            <option value="all">All Class Types</option>
+            <option value="reformer">Reformer Pilates</option>
+            <option value="yoga">Yoga Flow</option>
+            <option value="zumba">High-Energy Zumba / U-Jam</option>
+            <option value="stretch">1-On-1 Assisted Stretch</option>
+            <option value="women">Women-Only Sessions</option>
+          </select>
+        </div>
+
+        <div class="filter-group">
+          <label>Instructor:</label>
+          <select id="instructorFilter" onchange="applyScheduleFilters()">
+            <option value="all">All Instructors</option>
+            <option value="Mariam">Mariam K. (Pilates Lead)</option>
+            <option value="Sora">Sora T. (Yoga Master)</option>
+            <option value="James">James L. (Lead Flexologist)</option>
+            <option value="Elena">Elena R. (Zumba Director)</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- DAY TABS -->
+      <div class="day-tabs" id="dayTabsContainer">
+        <!-- JS populates day tabs -->
+      </div>
+
+      <!-- SCHEDULE TIME-ROW LIST CONTAINER -->
+      <div class="schedule-rows-container" id="scheduleGrid">
+        <!-- JS populates time-based rows -->
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container footer-container">
+      <div class="footer-brand">
+        <div class="logo-text">
+          <span class="logo-title">EVERYTHING FITNESS</span>
+          <span class="logo-subtitle">REFORMER PILATES · YOGA · DANCE · 1-ON-1 ASSISTED STRETCHING</span>
+        </div>
+        <p class="footer-address-text">1240 Saratoga Ave, Suite 100, Saratoga, CA 95070</p>
+      </div>
+      <div class="footer-newsletter">
+        <h4>Stay Connected</h4>
+        <p>Receive exclusive intro specials and wellness tips.</p>
+        <div class="newsletter-input">
+          <input type="email" placeholder="Enter your email">
+          <button class="btn btn-primary" onclick="alert('Thank you for subscribing!')">Join</button>
+        </div>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <p>© 2026 Everything Fitness Studio LLC. All rights reserved.</p>
+      <div class="footer-legal">
+        <a href="#">Privacy Policy</a> · <a href="#">Terms of Service</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- MODALS -->
+  <div class="modal-overlay" id="introModal">
+    <div class="modal-card">
+      <button class="modal-close" onclick="closeIntroModal()">×</button>
+      <div class="modal-header">
+        <span class="modal-tag">100% FREE INTRODUCTORY SESSION</span>
+        <h2>Claim Your Free First Class</h2>
+        <p>Select your preferred modality below to secure your free trial spot.</p>
+      </div>
+      <form id="introForm" onsubmit="handleIntroSubmit(event)">
+        <div class="form-group">
+          <label>Select Free Intro Modality</label>
+          <div class="modality-radio-group">
+            <label class="radio-card">
+              <input type="radio" name="introModality" value="Reformer Pilates" checked>
+              <div class="radio-content">
+                <strong>Reformer Pilates Intro</strong>
+                <span>30-min machine orientation & core flow</span>
+              </div>
+            </label>
+            <label class="radio-card">
+              <input type="radio" name="introModality" value="Women-Only Session">
+              <div class="radio-content">
+                <strong>Women-Only Workout Trial</strong>
+                <span>Dedicated female-only Reformer, Yoga, or Zumba class</span>
+              </div>
+            </label>
+            <label class="radio-card">
+              <input type="radio" name="introModality" value="Yoga / Zumba Flow">
+              <div class="radio-content">
+                <strong>Yoga / Zumba Trial</strong>
+                <span>Full 50-min energizing or soothing class</span>
+              </div>
+            </label>
+            <label class="radio-card">
+              <input type="radio" name="introModality" value="1-On-1 Assisted Stretch">
+              <div class="radio-content">
+                <strong>1-On-1 Assisted Stretch Demo</strong>
+                <span>15-min mobility assessment & stretch</span>
+              </div>
+            </label>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label>Full Name</label><input type="text" id="introName" placeholder="Mostafa Mansour" required></div>
+          <div class="form-group"><label>Phone Number</label><input type="tel" id="introPhone" placeholder="(408) 555-0123" required></div>
+        </div>
+        <div class="form-group"><label>Email Address</label><input type="email" id="introEmail" placeholder="you@example.com" required></div>
+        <button type="submit" class="btn btn-primary btn-full btn-lg">Confirm My Free Spot</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="bookingModal">
+    <div class="modal-card">
+      <button class="modal-close" onclick="closeBookingModal()">×</button>
+      <div class="modal-header">
+        <span class="modal-tag" id="bookModalTag">CLASS BOOKING</span>
+        <h2 id="bookModalTitle">Confirm Reservation</h2>
+        <p id="bookModalDetails">Time: -- | Instructor: --</p>
+      </div>
+      <div class="spot-capacity-alert" id="spotCapacityAlert">
+        <span id="spotAlertText">Only 2 spots left! Book now to secure your spot.</span>
+      </div>
+      <form id="classBookingForm" onsubmit="handleClassBookingSubmit(event)">
+        <div class="form-group"><label>Your Name</label><input type="text" id="bookName" placeholder="Mostafa M." required></div>
+        <div class="form-group"><label>Email Address</label><input type="email" id="bookEmail" placeholder="you@example.com" required></div>
+        <div class="form-group">
+          <label>Pass / Membership Credit</label>
+          <select id="bookPassType">
+            <option value="intro">Free Introductory Pass ($0.00)</option>
+            <option value="unlimited">Use Active Membership Pass</option>
+            <option value="dropin">Single Drop-in ($28.00)</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-primary btn-full btn-lg">Complete Reservation</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="authModal">
+    <div class="modal-card auth-modal-card">
+      <button class="modal-close" onclick="closeAuthModal()">×</button>
+      <div id="authFormView">
+        <div class="modal-header text-center">
+          <h2>Welcome Back!</h2>
+          <p>Log in to your Everything Fitness Studio account.</p>
+        </div>
+        <form id="loginForm" onsubmit="handleLoginSubmit(event)">
+          <div class="form-group"><label>Email Address</label><input type="email" id="loginEmail" value="mostafa@example.com" required></div>
+          <div class="form-group"><label>Password</label><input type="password" id="loginPassword" value="••••••••" required></div>
+          <button type="submit" class="btn btn-primary btn-full btn-lg">Log In</button>
+        </form>
+      </div>
+      <div id="authDashboardView" style="display: none;">
+        <div class="user-profile-header">
+          <div class="avatar-circle">MM</div>
+          <div><h3>Mostafa M.</h3><span class="user-tier-badge">Unlimited Everything VIP Member</span></div>
+        </div>
+        <div class="dash-content-area" id="dashContentArea"></div>
+        <button class="btn btn-outline btn-full logout-btn" onclick="handleLogout()">Log Out</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
